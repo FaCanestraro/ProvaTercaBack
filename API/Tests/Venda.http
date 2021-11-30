@@ -1,2 +1,12 @@
 ### Listar vendas
-POST https://localhost:5001/api/venda/list
+GET https://localhost:5001/api/venda/list
+
+###
+POST https://localhost:5001/api/venda/create
+Content-Type: application/json
+
+{
+    "Cliente": "Maria",
+    "FormaPagamentoId": 1,
+    "ItemVendaId":1
+}

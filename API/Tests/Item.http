@@ -10,4 +10,4 @@ Content-Type: application/json
 }
 
 ### Listar todas as categorias
-GET https://localhost:5001/api/item/getbycartid/f34e722e-bb9a-446a-998b-fa080df9ac1d
+GET https://localhost:5001/api/categoria/list

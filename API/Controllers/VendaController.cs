@@ -2,6 +2,7 @@ using System.Linq;
 using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -15,13 +16,24 @@ namespace API.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        [Route("create")]
+        public IActionResult Create([FromBody] Venda venda)
+        {
+            venda.ItemVenda = _context.ItensVenda.Find(venda.ItemVendaId);
+            venda.FormaP = _context.FormasPagamento.Find(venda.FormaPagamentoId);
+            _context.Vendas.Add(venda);
+            _context.SaveChanges();
+            return Created("", venda);
+        }
+
         //GET: api/venda/list
         //ALTERAR O MÉTODO PARA MOSTRAR TODOS OS DADOS DA VENDA E OS DADOS RELACIONADOS
         [HttpGet]
         [Route("list")]
         public IActionResult List()
         {
-            return Ok(_context.Vendas.ToList());
+            return Ok(_context.Vendas.Include(FormaPagamento => FormaPagamento.FormaP).ToList());
         }
     }
 }

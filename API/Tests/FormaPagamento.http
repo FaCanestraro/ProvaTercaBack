@@ -1,0 +1,12 @@
+### Cadastrar um nova forma de pagamento
+POST https://localhost:5001/api/formaPagamento/create
+Content-Type: application/json
+
+{
+    "Metodo" : "Débito",
+    "Vezes" : "1"
+
+}
+
+### Listar todas as categorias
+GET https://localhost:5001/api/formaPagamento/list
