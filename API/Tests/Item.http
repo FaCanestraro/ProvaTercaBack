@@ -6,8 +6,8 @@ Content-Type: application/json
     "ProdutoId" : 1,
     "Quantidade" : 1,
     "Preco" : 3.5,
-    "CarrinhoId" : ""
+    "CarrinhoId" : "aaa"
 }
 
-### Listar todas as categorias
-GET https://localhost:5001/api/categoria/list
+### Listar o carrinho
+GET https://localhost:5001/api/item/getByCartId/aaa

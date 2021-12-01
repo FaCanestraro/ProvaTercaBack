@@ -20,8 +20,9 @@ namespace API.Controllers
         [Route("create")]
         public IActionResult Create([FromBody] Venda venda)
         {
-            venda.ItemVenda = _context.ItensVenda.Find(venda.ItemVendaId);
             venda.FormaP = _context.FormasPagamento.Find(venda.FormaPagamentoId);
+            venda.ItemVenda = _context.ItensVenda.Find(venda.ItemVendaId);
+            venda.Produto = _context.Produtos.Find(venda.ProdutoId);
             _context.Vendas.Add(venda);
             _context.SaveChanges();
             return Created("", venda);
@@ -33,7 +34,13 @@ namespace API.Controllers
         [Route("list")]
         public IActionResult List()
         {
-            return Ok(_context.Vendas.Include(FormaPagamento => FormaPagamento.FormaP).ToList());
+            return Ok(_context.Vendas
+            .Include(FormaPagamento => FormaPagamento.FormaP)
+            .Include(ItemVenda => ItemVenda.ItemVenda)
+            .Include(Produto => Produto.Produto)
+            .ToList());
+
+
         }
     }
 }

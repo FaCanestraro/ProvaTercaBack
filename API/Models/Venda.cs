@@ -11,6 +11,8 @@ namespace API.Models
         public int FormaPagamentoId { get; set; }
         public FormaPagamento FormaP { get; set; }
         public ItemVenda ItemVenda { get; set; }
+        public Produto Produto { get; set; }
+        public int ProdutoId { get; set; }
         public int ItemVendaId { get; set; }
     }
 }

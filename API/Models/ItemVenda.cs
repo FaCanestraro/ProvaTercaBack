@@ -12,5 +12,6 @@ namespace API.Models
         public double Preco { get; set; }
         public string CarrinhoId { get; set; }
         public DateTime CriadoEm { get; set; }
+
     }
 }
